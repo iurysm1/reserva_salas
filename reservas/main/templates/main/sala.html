@@ -5,10 +5,17 @@
 {% block content %}
 
 
-    <div class="fileira" id="A"></div>
-    <div class="fileira" id="B"></div>
-    <div class="fileira" id="C"></div>
-    <div class="fileira" id="D"></div>
+    <form method="POST" style="text-align: center;">
+        {% csrf_token %}
+        <div class="fileira" id="A"><span class="andar">A</span></div>
+        <div class="fileira" id="B"><span class="andar">B</span></div>
+        <div class="fileira" id="C"><span class="andar">C</span></div>
+        <div class="fileira" id="D"><span class="andar">D</span></div>
+
+        <button type="submit" value="confirmar" name="confirmar" class="btn btn-primary m-5">Confirmar<i class="fa-solid fa-circle-check" style="font-size: 20px; margin-left: 10px;"></i></button>
+
+        <button class="btn btn-danger m-5" value="limpar" name="limpar">Limpar<i style="font-size: 20px; margin-left: 10px;" class="fa-solid fa-trash-can"></i></button>
+    </form>
 
 
 {% endblock %}
@@ -17,10 +24,38 @@
 {% block scripts %}
     <script>
         
+
+    
+
         $.get('/cadeiras').then(function(responseC){
             response = responseC.cadeiras;
 
-            console.log();
+           response.forEach(cadeira=>{
+                console.log('foreach')
+                var cadeiraDiv = `<div class="cadeira"><input type="checkbox" value="clicked" class="checkboxCadeiras" name="cadeira${cadeira.id}" id="cadeira${cadeira.id}"><label for="cadeira${cadeira.id}"><i class="fa-solid fa-couch" id="cadeiraIcon${cadeira.id}"></i><span class="numeroCadeira">${cadeira.numeroCadeira+1}</span></label></div>`
+                switch(cadeira.andar){
+                    case 'A':
+                        $('#A').append(cadeiraDiv)
+                        break
+
+                    case 'B':                   
+                        $('#B').append(cadeiraDiv)
+                        break
+
+                    case 'C':
+                        $('#C').append(cadeiraDiv)
+                        break
+
+                    case 'D':
+                        $('#D').append(cadeiraDiv)
+                        break
+                }
+                if(cadeira.status==true){
+                    $(`#cadeiraIcon${cadeira.id}`).addClass("selecionada")
+                    $(`#cadeira${cadeira.id}`).prop('disable',true)
+                }
+                
+            });
         })
 
 

@@ -14,3 +14,4 @@ class Cadeira(models.Model):
     andar=models.CharField(max_length=1)
     status = models.BooleanField(default=False)
     sala = models.ForeignKey(Sala, on_delete=models.CASCADE, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)

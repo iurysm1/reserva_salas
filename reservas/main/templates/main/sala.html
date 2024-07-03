@@ -1,0 +1,29 @@
+{% extends "main/base.html" %}
+
+
+
+{% block content %}
+
+
+    <div class="fileira" id="A"></div>
+    <div class="fileira" id="B"></div>
+    <div class="fileira" id="C"></div>
+    <div class="fileira" id="D"></div>
+
+
+{% endblock %}
+
+
+{% block scripts %}
+    <script>
+        
+        $.get('/cadeiras').then(function(responseC){
+            response = responseC.cadeiras;
+
+            console.log();
+        })
+
+
+        
+    </script>
+{% endblock %}

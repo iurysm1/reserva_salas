@@ -55,14 +55,14 @@
 
 
     <div class="sidenav">
-		<a href="/">Home</a>
+		<a href="/" style="color: white;">Home</a>
 		{% if user.is_authenticated %}
 		<form action="{% url 'logout' %}" method="post" style="display:inline;">
 			{% csrf_token %}
 			<button type="submit" class="btn btn-danger">Logout</button>
 		</form>
 		{% else %}
-			<a href="{% url 'login' %}"><button class="btn btn-primary">Login</button></a>
+			<a href="{% url 'login' %}"><button class="btn btn-success">Login</button></a>
 		{% endif %}
 	</div>
 	<div class="circle" id="circle1"></div>

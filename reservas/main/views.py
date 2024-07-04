@@ -6,10 +6,12 @@ from django.contrib.auth.decorators import login_required
 
 # Create your views here.
 
+    
+
+
 
 
 def home(request):
-
     salas = Sala.objects.all()
     return render(request, 'main/home.html', {'salas':salas})
 
@@ -27,18 +29,20 @@ def sala(request, id):
             for cadeira in sala.cadeira_set.all():
                 if cadeira.user_id==request.user.id:
                     cadeira.status=False
+                    cadeira.user_id=None
                 cadeira.save()
-        return render(request, 'main/sala.html')
+        return render(request, 'main/sala.html', {"sala":sala})
 
-    return render(request, 'main/sala.html')
+    return render(request, 'main/sala.html', {"sala":sala})
 
 
-def cadeiras(request):
-    cadeiras=Sala.objects.get(id=2).cadeira_set.all()
+def cadeiras(request,id):
+    sala=Sala.objects.get(id=id)
+    cadeiras=Sala.objects.get(id=sala.id).cadeira_set.all()
     cadeiras_json=[]
 
     for cadeira in cadeiras:
-        novaCadeira = {'id': cadeira.id, 'numeroCadeira':cadeira.numeroCadeira, 'andar': cadeira.andar, 'status':cadeira.status}
+        novaCadeira = {'id': cadeira.id, 'numeroCadeira':cadeira.numeroCadeira, 'andar': cadeira.andar, 'status':cadeira.status, 'user_id':cadeira.user_id}
         cadeiras_json.append(novaCadeira)
     return JsonResponse({'cadeiras':cadeiras_json})
 

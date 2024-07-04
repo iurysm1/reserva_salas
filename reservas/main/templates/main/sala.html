@@ -3,7 +3,7 @@
 
 
 {% block content %}
-
+    <button id="myButton" data-idSala="{{sala.id}}" style="display: none;"></button>
 
     <form method="POST" style="text-align: center;">
         {% csrf_token %}
@@ -22,17 +22,19 @@
 
 
 {% block scripts %}
-    <script>
-        
+    <script> 
+        var idSala = $('#myButton').data('idsala');
 
     
-
-        $.get('/cadeiras').then(function(responseC){
+        
+        $.get(`/cadeiras${idSala}`).then(function(responseC){
             response = responseC.cadeiras;
 
            response.forEach(cadeira=>{
-                console.log('foreach')
-                var cadeiraDiv = `<div class="cadeira"><input type="checkbox" value="clicked" class="checkboxCadeiras" name="cadeira${cadeira.id}" id="cadeira${cadeira.id}"><label for="cadeira${cadeira.id}"><i class="fa-solid fa-couch" id="cadeiraIcon${cadeira.id}"></i><span class="numeroCadeira">${cadeira.numeroCadeira+1}</span></label></div>`
+                console.log(cadeira.user_id)
+                var user = (cadeira.user_id==null) ? "Esta cadeira está vazia" : `Essa cadeira pertence ao usário ${cadeira.user_id}`
+
+                var cadeiraDiv = `<div class="cadeira" data-toggle="tooltip" data-placement="top" title="${user}"><input type="checkbox" value="clicked" class="checkboxCadeiras" name="cadeira${cadeira.id}" id="cadeira${cadeira.id}"><label for="cadeira${cadeira.id}"><i class="fa-solid fa-couch" id="cadeiraIcon${cadeira.id}"></i><span class="numeroCadeira">${cadeira.numeroCadeira+1}</span></label></div>`
                 switch(cadeira.andar){
                     case 'A':
                         $('#A').append(cadeiraDiv)

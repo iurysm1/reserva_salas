@@ -2,13 +2,13 @@
 
 
 .fileira{
-    text-align: center;
+    text-align: center;  
 }
 
 .cadeira{
     display: inline-block;
     margin: 10px;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid red;
 }
 
 .andar{
@@ -73,7 +73,3 @@ label, .porta{
     transform: translateY(-50px);
     z-index: 10;
 }
-
-
-
-

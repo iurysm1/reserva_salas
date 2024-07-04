@@ -42,9 +42,12 @@ def cadeiras(request,id):
     cadeiras_json=[]
 
     for cadeira in cadeiras:
-        novaCadeira = {'id': cadeira.id, 'numeroCadeira':cadeira.numeroCadeira, 'andar': cadeira.andar, 'status':cadeira.status, 'user_id':cadeira.user_id}
+        novaCadeira = {'id': cadeira.id, 'numeroCadeira':cadeira.numeroCadeira, 'andar': cadeira.andar, 'status':cadeira.status, 'user_id':cadeira.user_id, 'user_request':request.user.id}
         cadeiras_json.append(novaCadeira)
     return JsonResponse({'cadeiras':cadeiras_json})
+
+
+
 
 
 

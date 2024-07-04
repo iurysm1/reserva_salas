@@ -24,9 +24,6 @@
 {% block scripts %}
     <script> 
         var idSala = $('#myButton').data('idsala');
-
-    
-        
         $.get(`/cadeiras${idSala}`).then(function(responseC){
             response = responseC.cadeiras;
 
@@ -53,7 +50,12 @@
                         break
                 }
                 if(cadeira.status==true){
-                    $(`#cadeiraIcon${cadeira.id}`).addClass("selecionada")
+                    if(cadeira.user_id==cadeira.user_request){
+                        $(`#cadeiraIcon${cadeira.id}`).addClass("selecionadaPeloUsuario")
+                    }else{
+                        $(`#cadeiraIcon${cadeira.id}`).addClass("selecionada")
+
+                    }
                     $(`#numeroCadeira${cadeira.numeroCadeira}`).addClass("numeroBranco")
                     $(`#cadeira${cadeira.id}`).prop('disable',true)
                 }

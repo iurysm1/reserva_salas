@@ -8,7 +8,15 @@
 .cadeira{
     display: inline-block;
     margin: 10px;
-    border-bottom: 2px solid red;
+    border-bottom: 2px solid white;
+}
+
+.requiredField{
+    color: white;
+}
+
+p, input{
+    color: white;
 }
 
 .andar{
@@ -37,6 +45,7 @@ label, .porta{
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    color: white;
 }
 
 .porta{
@@ -44,32 +53,215 @@ label, .porta{
 }
 
 .checkboxCadeiras:checked + label i{
-    color: red;
+    color: rgba(255, 125, 50, 0.959);
+}
+
+label i{
+    color: white;
+}
+
+
+.checkboxCadeiras:checked + label span{
+    color: white !important;
 }
 
 .selecionada{
     color: grey !important;
 }
-
+.numeroBranco{
+    color: white !important;
+}
 
 .numeroCadeira{
     user-select: none;
     pointer-events: none;
     font-size: 15px;
     font-weight: bolder;
-    color: white;
+    color: black;
     position: absolute;
     transform: translateY(-5px);
     z-index: 10;
 }
+
 
 .numeroSala{
     user-select: none;
     pointer-events: none;
     font-size: 50px !important;
     font-weight: bolder;
-    color: white;
+    color: black !important;
     position: absolute;
     transform: translateY(-50px);
     z-index: 10;
 }
+
+
+.container {
+    text-align: center;
+    width: 70%;
+    height: 80vh;
+    max-height: 650px;
+    background-color: rgba(255, 255, 255, 0.041);
+    padding: 15px;
+    border-radius: 5px;
+    backdrop-filter: blur(10px);
+    position: absolute;
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.253);
+    overflow: hidden;
+}
+
+.dados{
+    overflow: auto;
+    max-height: 200px;
+}
+
+.card{
+    background-color: rgba(255, 255, 255, 0.041);
+}
+
+
+
+body .circle{
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    position: relative;
+    z-index: 0;
+    animation: floating 3000ms infinite linear;
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.253);
+}
+
+@keyframes floating {
+    0% {
+      transform: translateY(0px);
+    }
+  
+    50% {
+      transform: translateY(-10px);
+    }
+  
+    100% {
+      transform: translateY(0px);
+    }
+  }
+
+#circle1{
+    right: 24%;
+    bottom: 33%;
+    background-image: linear-gradient( to left, rgb(0, 106, 226), rgba(72, 158, 192, 0.959));
+}
+
+#circle2{
+    left: 24%;
+    top: 33%;
+    animation-delay: 1s;
+    background-image: linear-gradient(to right, rgba(255, 94, 0, 0.959) ,rgba(255, 125, 50, 0.959) );
+
+}
+
+input,nav, button, card{
+    box-shadow: 5px 10px 5px rgba(0, 0, 0, 0.253) !important;
+
+}
+
+input, nav{
+    background-color: rgb(51, 51, 51) !important;
+    border: none !important;
+    border: 12px;
+}
+ 
+body{
+    background-color: rgb(20, 20, 20);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    height: 100vh;
+}
+
+.well {
+    margin-top: 50px;
+    margin-left: 20%;
+    margin-right: 20%;
+    display: grid;
+    align-items: center;
+}
+
+.btn-success{
+    background-color: rgba(81, 238, 141, 0.959) !important;
+    border: rgba(81, 238, 141, 0.959);
+    z-index: 4;
+
+}
+
+.btn-primary{
+    background-color: rgba(72, 158, 192, 0.959) !important;
+    border: rgba(72, 158, 192, 0.959);
+    z-index: 3;
+
+}
+
+.btn-danger{
+    background-color: rgba(255, 125, 50, 0.959) !important;
+    border: rgba(255, 125, 50, 0.959);
+    z-index: 2;
+}
+
+.alert{
+    position: absolute;
+    width: 96.6%;
+    margin: auto !important;
+}
+
+.alert span, .alert button{
+    box-shadow: none !important;
+    color: white;
+}
+
+.close{
+    opacity: 1;
+}
+
+.alert-success {
+    background-color: rgba(81, 238, 141, 0.959) !important;
+    border: rgba(81, 238, 141, 0.959);
+}
+
+.alert-danger {
+    background-color: rgba(255, 125, 50, 0.959) !important;
+    border: rgba(255, 125, 50, 0.959);
+}
+
+
+.input-group-text{
+    background-color: rgb(51, 51, 51) !important;
+    border: none;
+    gap: 10px;
+}
+
+
+
+
+::-webkit-scrollbar {
+    width: 10px; 
+    margin-left: 5px;
+
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f100; 
+    padding: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888; 
+    border-radius: 20px;
+
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+  

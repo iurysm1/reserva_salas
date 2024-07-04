@@ -34,7 +34,7 @@
                 console.log(cadeira.user_id)
                 var user = (cadeira.user_id==null) ? "Esta cadeira está vazia" : `Essa cadeira pertence ao usário ${cadeira.user_id}`
 
-                var cadeiraDiv = `<div class="cadeira" data-toggle="tooltip" data-placement="top" title="${user}"><input type="checkbox" value="clicked" class="checkboxCadeiras" name="cadeira${cadeira.id}" id="cadeira${cadeira.id}"><label for="cadeira${cadeira.id}"><i class="fa-solid fa-couch" id="cadeiraIcon${cadeira.id}"></i><span class="numeroCadeira">${cadeira.numeroCadeira+1}</span></label></div>`
+                var cadeiraDiv = `<div class="cadeira" data-toggle="tooltip" data-placement="top" title="${user}"><input type="checkbox" value="clicked" class="checkboxCadeiras" name="cadeira${cadeira.id}" id="cadeira${cadeira.id}"><label for="cadeira${cadeira.id}"><i class="fa-solid fa-couch" id="cadeiraIcon${cadeira.id}"></i><span class="numeroCadeira" id="numeroCadeira${cadeira.numeroCadeira}">${cadeira.numeroCadeira+1}</span></label></div>`
                 switch(cadeira.andar){
                     case 'A':
                         $('#A').append(cadeiraDiv)
@@ -54,6 +54,7 @@
                 }
                 if(cadeira.status==true){
                     $(`#cadeiraIcon${cadeira.id}`).addClass("selecionada")
+                    $(`#numeroCadeira${cadeira.numeroCadeira}`).addClass("numeroBranco")
                     $(`#cadeira${cadeira.id}`).prop('disable',true)
                 }
                 

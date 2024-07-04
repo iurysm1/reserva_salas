@@ -9,14 +9,14 @@
 
 {% block content %}
 
-    <h1 class="m-5" style="text-align: center;">
+    <h1 class="m-5" style="text-align: center; color: white;">
         Nossas salas
     </h1>
 
 
     <div class="portas">
         {% for sala in salas.all %}
-        <div class="porta"><a href="{{sala.id}}" class="salas m-3" style="position: relative;"><i class="fa-solid fa-door-closed" style="font-size: 170px;"></i></a><span class="numeroSala">{{sala.numeroSalas}}</span></div>
+        <div class="porta"><a href="{{sala.id}}" class="salas m-3" style="position: relative; color: white;"><i class="fa-solid fa-door-closed" style="font-size: 170px;"></i></a><span class="numeroSala">{{sala.numeroSalas}}</span></div>
         {% endfor %}
     </div>
 
